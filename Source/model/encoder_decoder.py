@@ -1,12 +1,12 @@
-import teacher.decoder
-import teacher.encoder
+import model.decoder
+import model.encoder
 import torch.nn as nn
 
 class EncoderDecoder(nn.Module):
     def __init__(self,noiser):
         super(EncoderDecoder,self).__init__()
-        self.encoder = teacher.encoder.Encoder()
-        self.decoder = teacher.decoder.Decoder()
+        self.encoder = model.encoder.Encoder()
+        self.decoder = model.decoder.Decoder()
         self.noiser = noiser
 
     def forward(self,image,message,sub_image, epoch, mode):
