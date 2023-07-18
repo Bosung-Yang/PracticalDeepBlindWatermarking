@@ -1,16 +1,16 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import teacher.discriminator
-import teacher.encoder_decoder
+import model.discriminator
+import model.encoder_decoder
 
 class Basic:
     def __init__(self, device:torch.device, noiser):
 
         super(Basic,self).__init__()
         self.noiser = noiser
-        self.ED = teacher.encoder_decoder.EncoderDecoder(self.noiser).to(device)
-        self.DIS = teacher.discriminator.Discriminator().to(device)
+        self.ED = model.encoder_decoder.EncoderDecoder(self.noiser).to(device)
+        self.DIS = model.discriminator.Discriminator().to(device)
         self.optim_ED = torch.optim.Adam(self.ED.parameters())
         self.optim_DIS = torch.optim.Adam(self.DIS.parameters())
 
